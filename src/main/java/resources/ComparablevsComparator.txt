@@ -1,0 +1,136 @@
+//Comparator
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Person {
+    private String name;
+    private int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getters for name and age
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // toString method for better representation
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + '}';
+    }
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+        // Create a list of Person objects
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person("Alice", 25));
+        personList.add(new Person("Bob", 30));
+        personList.add(new Person("Charlie", 22));
+        personList.add(new Person("David", 28));
+
+        // Print the list before sorting
+        System.out.println("Before sorting:");
+        for (Person person : personList) {
+            System.out.println(person);
+        }
+
+        // Sort the list using a custom comparator (based on name)
+        Collections.sort(personList, new NameComparator());
+
+        // Print the list after sorting
+        System.out.println("\nAfter sorting (based on name):");
+        for (Person person : personList) {
+            System.out.println(person);
+        }
+    }
+}
+
+class NameComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person person1, Person person2) {
+        // Custom sorting based on name
+        return person1.getName().compareTo(person2.getName());
+    }
+}
+
+
+//Comparable
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Person {
+    private String name;
+    private int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getters for name and age
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // toString method for better representation
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + '}';
+    }
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+        // Create a list of Person objects
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person("Alice", 25));
+        personList.add(new Person("Bob", 30));
+        personList.add(new Person("Charlie", 22));
+        personList.add(new Person("David", 28));
+
+        // Print the list before sorting
+        System.out.println("Before sorting:");
+        for (Person person : personList) {
+            System.out.println(person);
+        }
+
+        // Sort the list using a custom comparator (based on name)
+        Collections.sort(personList, new NameComparator());
+
+        // Print the list after sorting
+        System.out.println("\nAfter sorting (based on name):");
+        for (Person person : personList) {
+            System.out.println(person);
+        }
+    }
+}
+
+class NameComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person person1, Person person2) {
+        // Custom sorting based on name
+        return person1.getName().compareTo(person2.getName());
+    }
+}
+
+

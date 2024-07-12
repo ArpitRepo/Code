@@ -1,0 +1,28 @@
+@Test(priority = 1)
+public void testCase1() {
+    // Test Case 1 logic
+}
+
+@Test(priority = 2)
+public void testCase2() {
+    // Test Case 2 logic
+}
+
+@Test(priority = 3)
+public void testCase3() {
+    // Test Case 3 logic
+}
+
+@Test
+public void loginTest() {
+    // Login Test logic
+}
+
+@Test(dependsOnMethods = "loginTest")
+public void dashboardTest() {
+    // Dashboard Test logic
+}
+
+By default, TestNG runs test methods in the order they are found in the source file. If you do not specify any
+ordering mechanism such as priority or dependsOnMethods, TestNG will execute test methods in the alphabetical order
+of their names.

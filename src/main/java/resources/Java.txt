@@ -1,0 +1,543 @@
+int in = 15;
+String str1 = String.valueOf(in);
+
+String  str2 = "5";
+int in2 = Integer.valueOf(str2);
+
+char ch ='a';
+int in = (int) ch;
+
+oj.toString();
+
+String st = "Something";
+char j = st.charAt(st);
+
+char chj = 'a';
+String st = String.valueOf(chj);
+
+Returning -1 in Java can be used to indicate a special condition, such as an error or a not-found status.
+
+A valid parenthesis expression is one in which every opening parenthesis '(' has a corresponding closing
+parenthesis ')',
+
+Marker Interface
+In Java, a marker interface is an interface with no methods. Marker interfaces are used to indicate a special behavior
+or capability that a class implementing the interface possesses. The presence of the marker interface on a class is
+often used to trigger certain behavior or functionality.
+Here are a few points about marker interfaces:
+No Methods: Marker interfaces do not contain any methods. They simply act as a marker to signify that a class implementing the interface should be treated in a specific way.
+Usage: Common use cases for marker interfaces include indicating that a class should be treated as Serializable,
+Cloneable, or a certain type in a framework or library.
+Marker interfaces are used to provide metadata about a class or to indicate that a class should be treated
+differently by the compiler or runtime environment.
+Examples:
+java.io.Serializable: Classes that implement this interface can be serialized.
+java.lang.Cloneable: Classes that implement this interface can be cloned using the clone() method.
+Example of a marker interface:
+
+Serializable Interface
+Yes, the Serializable interface in Java is an example of a marker interface. A marker interface is an interface with no methods, and it is used to indicate a certain capability or behavior to the Java runtime.
+The Serializable interface is part of the Java Serialization mechanism, and when a class implements Serializable,
+it signals that instances of that class can be serialized.
+Serialization is the process of converting an object into a byte stream, which can be saved to a file, sent over a
+network, or stored in a database.
+Implementing Serializable allows objects of the class to be easily converted into a format that can be reconstructed later.
+
+Singleton
+A Singleton is a design pattern that restricts the instantiation of a class to a single instance and provides a global
+point of access to that instance.
+Private Constructor, Private Static Instance, ˇ
+
+Serialization and Deserialization
+Serialization is the process of converting a Java object into its JSON representation and vice versa is deserialization.
+
+Data Table works only for the single step below which it is defined rather than the entire scenario
+The Scenario Outline keyword can be used to run the same Scenario multiple times, with different combinations of data.
+Scenario Outline: Verify login with different credentials
+  Given User is on the login page
+  When User enters "<username>" and "<password>"
+  Then User should be logged in successfully
+
+  Examples:
+    | username | password  |
+    | user1    | password1 |
+    | user2    | password2 |
+    | user3    | password3 |
+
+Scenario: Verify login with different credentials
+  Given User is on the login page
+  When User enters the following credentials
+    | username | password  |
+    | user1    | password1 |
+    | user2    | password2 |
+    | user3    | password3 |
+  Then User should be logged in successfully
+
+An interface that contains only one abstract method is known as
+functional interface. It can have number of default and static methods.
+functional interface before java 8  Runnable, Callable, Comparator
+
+An anonymous class in Java is a local class that doesn't have a name.
+interface Greeting {
+    void greet();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an anonymous class that implements the Greeting interface
+        Greeting greeting = new Greeting() {
+            @Override
+            public void greet() {
+                System.out.println("Hello, world!");
+            }
+        };
+
+        // Calling the method defined in the interface
+        greeting.greet();
+    }
+}
+
+List to Array
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListToArrayExample {
+    public static void main(String[] args) {
+        // Create a List of strings
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Java");
+        stringList.add("Python");
+        stringList.add("C++");
+
+        // Convert List to array
+        String[] stringArray = stringList.toArray(new String[0]);
+
+        // Print the elements of the array
+        System.out.println("Array elements:");
+        for (String element : stringArray) {
+            System.out.println(element);
+        }
+    }
+}
+
+! does not compare int
+ List<String> list1 = List.of("abc", "def", "hig");
+ available in Java 9 or later
+We convert the stringList to an array using the toArray() method. We pass a new String array of size 0 as the argument
+to toArray(). If the size of the
+array is less than the size of the list, a new array of the same type and the same size as the list is allocated. If the size of the array
+is greater than the size of the list, the array is used as is, and the extra elements are set to null.
+
+Jave 8 introduced default method in interface
+interface MyInterface {
+    // Default method with a default implementation
+    default void defaultMethod() {
+        System.out.println("This is a default method.");
+    }
+}
+
+class MyClass implements MyInterface {
+    // No need to provide an implementation for defaultMethod()
+    // It will inherit the default implementation from MyInterface
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.defaultMethod(); // This will call the default implementation from MyInterface
+    }
+}
+
+An abstract class is a class that cannot be instantiated on its own and is meant to be extended by subclasses.
+It may contain abstract methods, defined methods, instance variables, constructors, and other types of members.
+
+abstract class Shape {
+    // Abstract method (must be implemented by subclasses)
+    public abstract double area();
+
+    // Defined method with a concrete implementation
+    public void display() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double area() {
+        return length * width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        circle.display(); // Output: This is a shape.
+        System.out.println("Area of circle: " + circle.area()); // Output: Area of circle: 78.53981633974483
+
+        Rectangle rectangle = new Rectangle(4, 6);
+        rectangle.display(); // Output: This is a shape.
+        System.out.println("Area of rectangle: " + rectangle.area()); // Output: Area of rectangle: 24.0
+    }
+}
+In Java, abstract classes cannot have abstract variables. Abstract classes can have abstract methods, but they
+cannot have abstract variables.
+
+Here's what happens during the instantiation process:
+
+Memory Allocation: When an object is instantiated, memory is allocated to store its data members (instance variables).
+The amount of memory allocated depends on the size and type of the data members.
+
+Constructor Invocation: After memory allocation, the object's constructor is invoked to initialize its state. The
+constructor may initialize the object's data members to default values or accept parameters to initialize them with
+specific values.
+
+Initialization: Once the constructor completes its execution, the object is fully initialized and ready for use. It is
+now a valid instance of the class and can be accessed and manipulated through its methods and data members.
+
+Purpose: The hashCode() method is used to generate a numerical representation of an object's state. It is primarily
+used for efficient storage and retrieval of objects in hash-based collections.
+
+Usage: The hashCode() method is often used in conjunction with the equals() method. For example, when storing objects
+in a HashMap, the hashCode() method is used to determine the bucket in which the object should be stored, and the
+equals() method is used to check for equality within that bucket.
+
+POJO vs Encapsulation
+Additionally, encapsulation allows for validation or modification of data within setter methods, ensuring that only
+valid data is stored.
+Encapsulation, on the other hand, is a broader concept in object-oriented programming that focuses on bundling data
+and methods together and controlling access to the data.
+
+public class EncapsulationExample {
+    private int data;
+
+    // Setter method
+    public void setData(int value) {
+        if (value >= 0) {
+            this.data = value;
+        }
+    }
+
+    // Getter method
+    public int getData() {
+        return this.data;
+    }
+}
+
+Arrays.toString(arr);:- The Arrays.toString() method in Java is a utility provided by the java.util.Arrays
+class. It is used to return a string representation of the contents of the specified array.
+Arrays.equlas(arr1,arr2);
+
+ the toString() method is a part of the Object class, which is the superclass of all other classes. By default,
+ Object provides an implementation of toString() that returns a string consisting of the class name followed by the "@" symbol
+ and the object's hash code in hexadecimal.
+
+ Exiting a Method: When a return statement is executed, it immediately exits the current method, regardless of where it
+ appears within the method. This means that any code after the return statement will not be executed.
+ public void printMessage(String message) {
+     if (message == null) {
+         return; // Exit the method if message is null
+     }
+     System.out.println(message);
+ }
+
+Protected Access Modifier: In Java, protected is one of the access modifiers that can be applied to classes, methods,
+and fields. When a member is declared as protected, it is accessible within its own package as well as by
+subclasses, even if they are in different packages.
+
+ In Java, arrays have a fixed size that is specified at the time of creation, and it cannot be changed later.
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegularExpressionMatching {
+    public boolean isMatch(String s, String p) {
+        Pattern pattern = Pattern.compile(p);
+        Matcher matcher = pattern.matcher(s);
+        return matcher.matches();
+    }
+
+    public static void main(String[] args) {
+        RegularExpressionMatching rem = new RegularExpressionMatching();
+        String s = "aa";
+        String p = "a*";
+        System.out.println(rem.isMatch(s, p));  // Output: true
+    }
+}
+
+We first compile the regular expression pattern p using Pattern.compile(p).
+Then, we create a Matcher object by calling matcher(s) on the compiled pattern, where s is the input string.
+We use the matches() method of the Matcher class to check if the entire input string matches the pattern.
+Finally, we return the result of matcher.matches(), which indicates whether the input string matches the pattern.
+This approach utilizes the built-in regular expression matching capabilities provided by the Java standard library,
+making it concise and easy to use.
+
+You obtain a Matcher object by calling the matcher() method on a Pattern object, passing in the input string.
+
+1. Key-Value Pairs: A HashMap stores data in key-value pairs, where each key is unique within the map. Keys are used
+to retrieve the associated values.
+2. No Duplicate Keys: HashMap does not allow duplicate keys. If you attempt to insert a duplicate key with a different
+value, the new value will overwrite the existing one.
+3. Null Keys and Values:A HashMap can contain one null key and multiple null values. This means you can store a
+key-value pair where the key is null.
+4. Ordering: HashMaps do not guarantee any specific order of elements. The order may change when elements are added
+or removed.
+5. Performance: HashMap provides constant-time (O(1)) performance for basic operations like "get" and put. This is one
+of the reasons why it is widely used for fast data retrieval.
+6. Synchronization: HashMap is not synchronized, which means it is not thread-safe. If you need thread safety, consider
+using ConcurrentHashMap or synchronizing access to the HashMap externally.
+
+Map<String, String> concurrentMap = new ConcurrentHashMap<>();
+
+8. Common Methods:
+  - put(key, value): Inserts a key-value pair into the HashMap.
+  - get(key): Retrieves the value associated with a given key.
+  - remove(key): Removes the key-value pair associated with the specified key.
+  - containsKey(key): Checks if the HashMap contains a specific key.
+  - containsValue(value): Checks if the HashMap contains a specific value.
+  - size(): Returns the number of key-value pairs in the HashMap.
+  - isEmpty(): Checks if the HashMap is empty.
+
+  n this example, MyClass implements the Serializable interface, which is a marker
+   interface indicating that instances of this class can be serialized. Serialization is the process of converting an
+object into a stream of bytes so that it can be saved to a file, sent over a network, or stored in a database.
+
+Compile-Time Checks: Since marker interfaces are used at compile-time, they can help enforce certain contracts or
+requirements. Classes that implement marke interfaces are checked at compile-time, ensuring they adhere to the
+expected behavior associated with the marker interface.
+
+anonymous classes can be created within any class, including within methods or even within other anonymous classes. An anonymous class is a class without a name,
+ typically used for one-time use, and it's defined and instantiated in a single expression.
+
+ abstract class Shape {
+     // Instance variables
+     protected double area;
+
+     // Class variable
+     public static final String SHAPE_TYPE = "Abstract Shape";
+
+     // Abstract method
+     public abstract double calculateArea();
+ }
+
+ class Circle extends Shape {
+     private double radius;
+
+     public Circle(double radius) {
+         this.radius = radius;
+     }
+
+     @Override
+     public double calculateArea() {
+         area = Math.PI * radius * radius;
+         return area;
+     }
+ }
+
+
+Yes, you're correct. In an abstract class, you can declare a method without providing its implementation. If the method is declared with the abstract keyword,
+it's called an abstract method, and the class containing it must be declared as abstract as well. If the method is not
+declared as abstract, it's a concrete method, and it must have a complete implementation in the abstract class itself.
+
+Abstract by Default: Methods declared in interfaces are abstract by default, meaning they don't have a body and
+must be implemented by classes that implement the interface.
+No Method Body: Interface methods don't have method bodies; they only specify the method signature (name, parameters, return type).
+Public Access Modifier: Interface methods are implicitly public, so they can be accessed by any class that implements the interface.
+No Other Modifiers Allowed: Interface methods cannot have any other modifiers like private, protected, final, or static.
+
+interface Animal {
+    void makeSound(); // This method is implicitly abstract and public
+}
+
+
+Here's the difference between abstract and concrete methods in an abstract cla
+
+
+In Java, when you call toString() on an array directly, you get a string representation of the array's memory
+address, not its contents. This happens because arrays do not override the toString() method inherited from the
+Object class.
+Use the above concept to explain overriding
+
+Override you use in POJO, API testing
+
+When an element is added to an ArrayList and its size equals its capacity, the ArrayList needs to grow.
+To determine the new capacity, the formula newCapacity = oldCapacity * 1.5 is used.
+Default Capacity: The initial capacity of the internal array when an ArrayList is created with the default constructor (i.e., new ArrayList<>()) is 10.
+
+
+The Shadow DOM (Document Object Model) is a web standard that encapsulates DOM subtrees under a shadow root, preventing
+them from being directly manipulated by external CSS or JavaScript. This encapsulation allows for more modular and
+reusable web components, as it shields the internal structure and styling of a component from external interference.
+
+The filter method is used to select elements from a stream based on a given predicate.
+It takes a predicate function as an argument, which determines whether an element should be included in the resulting
+stream.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> squaredNumbers = numbers.stream()
+                                      .map(num -> num * num)
+                                      .collect(Collectors.toList());
+// Output: [1, 4, 9, 16, 25]
+
+Interface methods are implicitly public and abstract
+Interface variables are implicitly public, static, and Final
+final is a keyword in Java used to declare constants, methods, and classes( This effectively prevents other classes from extending it to create subclasses.)
+with specific behaviors:
+finalize() is a method defined in the Object class in Java. It is called by the garbage collector before reclaiming
+an object's memory:
+finally is a block in Java used in exception handling and associated with try-catch blocks:
+It contains code that is always executed, regardless of whether an exception is thrown or caught.
+It is typically used to release resources or perform cleanup operations, such as closing files or releasing database
+connections.
+
+a final method is a method that cannot be overridden by subclasses.
+
+ Map<String, Integer> hashMap = new HashMap<>();
+
+        // Wrap the HashMap with a synchronized wrapper
+        Map<String, Integer> synchronizedMap = Collections.synchronizedMap(hashMap);
+
+
+
+
+
+Java 8
+Set<String> st = new HashSet();
+String.join(st);
+
+When an exception occurs, the stack trace shows the path of method calls that led to the exception.
+
+super() in constructors:
+
+When you create a subclass constructor, Java implicitly inserts a call to the superclass's no-argument
+constructor (super()). If the superclass does not have a no-argument constructor and only has constructors with arguments, you must explicitly call one of those
+constructors using super(arguments) in the subclass constructor.
+If you don't explicitly call a superclass constructor using super(...), the compiler automatically inserts a call to super() as the first statement of the subclass constructor.
+Explicit call to superclass constructor:
+
+If you want to explicitly call a superclass constructor with specific arguments from a subclass constructor, you can use super(arguments). This must be the first statement in the subclass constructor.
+super keyword in method overriding:
+
+In a subclass, you can use the super keyword to explicitly call a method from the superclass with the same name as the overridden method in the subclass.
+Inside a subclass method, super.methodName(...) calls the superclass's version of the method,
+while methodName(...) calls the overridden version in the subclass.
+Unlike constructors, there's no implicit call to the superclass method in overridden methods.
+
+
+Isomorphic strings:  one-to-one mapping between characters
+Balanced brackets: Each opening bracket must have a corresponding closing bracket.
+                   Brackets must be closed in the correct order, meaning the most recently opened
+                   bracket should be closed first.
+
+Collection: An interface that defines a group of objects known as elements. It is the root interface for all collection types like List, Set, and Queue.
+Collections: A utility class that provides static methods to operate on collections, such as sorting, searching, and creating synchronized or immutable collections.
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+
+Map<String, String> concurrentMap = new ConcurrentHashMap<>();
+
+// No need for manual synchronization for atomic operations
+concurrentMap.putIfAbsent("key", "value");
+
+interface MyInterface {
+    void myMethod();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of the interface using an anonymous class
+        MyInterface myInterface = new MyInterface() {
+            @Override
+            public void myMethod() {
+                System.out.println("Implementation of myMethod in anonymous class");
+            }
+        };
+
+        // Calling the overridden method
+        myInterface.myMethod();
+    }
+}
+
+Limited Reusability: Anonymous classes cannot be reused elsewhere in the code. They are typically defined inline at the point of instantiation and cannot be
+referenced elsewhere.
+
+Cannot Have Constructors: Anonymous classes cannot have explicit constructors. This means you cannot initialize instance variables or perform additional setup
+within the anonymous class.
+Difficult to Debug: Anonymous classes do not have meaningful names, making it harder to identify them in stack traces or debug information.
+
+Exception handling in Java is a powerful mechanism for managing runtime errors
+Throwable: The superclass of all errors and exceptions
+Unchecked Exceptions (Runtime Exceptions): Subclasses of RuntimeException. These do not need to be declared or caught.
+
+Checked Exceptions(file not found, Class not found)
+Must be either caught or declared in the method.
+Examples: IOException, SQLException.
+Unchecked Exceptions (Runtime Exceptions)
+Do not need to be declared or caught.
+Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
+
+Errors
+Serious issues that usually indicate a problem with the JVM or hardware.
+Examples: OutOfMemoryError, StackOverflowError.
+
+public class MyCustomException extends Exception {
+    public MyCustomException(String message) {
+        super(message);
+    }
+}
+
+Yes, checked exceptions in Java are found at compile time.
+
+Object of array: {1,3,4,5,6}:- Length;
+String[] r = a.split(""); length();ß
+
+Yes, in Java, using return false; within a method will exit the method and return the value false to the caller.
+
+
+A final method in Java is a method that cannot be overridden by subclasses. This is useful when you want to ensure that the implementation of a method
+remains unchanged by any subclass.
+
+A final class in Java is a class that cannot be subclassed. This is useful when you want to create an immutable class or to prevent inheritance
+ for other reasons.
+
+// Final class
+final class FinalClass {
+    public void display() {
+        System.out.println("This is a method in a final class.");
+    }
+}
+
+// Trying to subclass a final class will result in a compile-time error
+/*
+class SubClass extends FinalClass {
+    // ...
+}
+*/
+
+public class FinalClassExample {
+    public static void main(String[] args) {
+        FinalClass finalClass = new FinalClass();
+        finalClass.display(); // Calls the method from the final class
+    }
+}

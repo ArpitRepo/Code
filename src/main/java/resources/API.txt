@@ -1,0 +1,87 @@
+Authentication:
+
+Authentication is the process of verifying the identity of a user or entity. It ensures that the user or entity is who they claim to be.
+In the context of APIs, authentication typically involves proving the identity of the client or user making a request to the API.
+Common methods of authentication include username/password authentication, token-based authentication (such as JSON Web Tokens or OAuth tokens), API keys, client certificates, etc.
+Successful authentication provides the user or client with access to the system or resource.
+Authorization:
+
+Authorization is the process of determining whether a user or entity has the necessary permissions and privileges to access a specific resource or perform a certain action.
+It involves checking the permissions associated with the authenticated user or entity to see if they are allowed to perform the requested operation.
+Authorization often relies on the authenticated user's role, group membership, or specific permissions assigned to them.
+Access control lists (ACLs), role-based access control (RBAC), and attribute-based access control (ABAC) are common mechanisms used for authorization.
+Successful authorization grants or denies access to the requested resource or operation based on the permissions and policies defined for the authenticated user or entity.
+
+ "200 OK" indicates that the client's request was successful and that the server has fulfilled the request.
+ 401:- Unauthorized
+ 403:- Forbidden if the authenticated entity lacks the necessary permissions to access the requested resource
+ 404:- Not found
+ 400:- Bad request
+ 500:-  It is a generic error message indicating that something went wrong on the server's end, and the server is unable to provide a more specific error message to the client.
+
+ Creating a JSON payload
+ EmployeeDetails: POJO class
+ EmployeeDetails emp = new EmployeeDetails();
+ 		emp.setName("GsonTest");
+ 		emp.setSalary(50000);
+ 		emp.setAge(25);
+
+ 		// Converting a Java class object to a JSON payload as string using Gson
+ 		Gson builder = new GsonBuilder().setPrettyPrinting().create();
+ 		String employeePrettyJsonPayload = builder.toJson(emp);
+
+Deserialization
+Gson handles the instantiation of the User object internally during the deserialization process.
+
+//User is a POJO class.
+
+public class Main {
+    public static void main(String[] args) {
+        // Set base URI for the API endpoint
+        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+
+        // Make a GET request to fetch a user by ID (assuming user with ID 1 exists)
+        Response response = RestAssured.get("/users/1");
+
+        // Extract JSON response body as a string
+        String jsonResponse = response.getBody().asString();
+
+        // Use Gson to directly deserialize JSON response into User object
+        Gson gson = new Gson();
+        User user = gson.fromJson(jsonResponse, User.class);
+
+        // Print user details
+        System.out.println("User ID: " + user.getId());
+        System.out.println("User Name: " + user.getName());
+        System.out.println("User Email: " + user.getEmail());
+    }
+}
+
+Field Names: In your POJO class, each field represents a key in the resulting JSON object.
+The field names themselves serve as the keys in the JSON output.
+
+Annotations: Libraries like Gson and Jackson also allow you to annotate your Java fields to customize the JSON output. For
+example, you can use @SerializedName annotation from Gson to specify a different
+name for the JSON key than the field name.
+import com.google.gson.annotations.SerializedName;
+
+public class UserRequest {
+    @SerializedName("page")
+    private int page;
+
+    @SerializedName("limit")
+    private int limit;
+
+    @SerializedName("sort")
+    private String sort;
+
+    // Other fields and methods omitted for brevity
+}
+
+Keys must be unique within the HashMap. If you attempt to insert a duplicate key, the previous value associated with
+that key will be replaced by the new value.
+Keys are typically objects, but they can also be primitive types (such as Integer, String, etc.) due
+to auto-boxing.
+
+
+

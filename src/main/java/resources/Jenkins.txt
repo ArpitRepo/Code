@@ -1,0 +1,86 @@
+Pipeline
+Upstream, Downstream
+Build Trigger
+Post a Job, Schedule time
+
+General: This project is parameterized: add params(Stringm Boolean, Active choice, Reactive reference..)
+
+Parameterized plugin to pass value from one job to another
+
+PostBuid:- Trigger parameterized build on another project
+
+Environment script or stage level
+
+Build Downstream job with pipeline code
+build job: 'downstream-job-name'
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Your build steps here
+            }
+        }
+        stage('Trigger Downstream Job') {
+            steps {
+                echo 'Triggering downstream job...'
+                build job: 'downstream-job-name'
+            }
+        }
+    }
+}
+
+
+
+environment {}
+The environment {} block is used at the pipeline level or within a specific stage to define environment variables that
+will be available to all steps within that scope. It's a declarative way to set environment variables.
+
+
+pipeline {
+    agent any
+
+    environment {
+        PATH = '/usr/local/bin'
+        JAVA_HOME = '/usr/lib/jvm/java-8'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Environment variables PATH and JAVA_HOME are available here
+                sh 'echo $PATH'
+                sh 'echo $JAVA_HOME'
+            }
+        }
+        // Other stages...
+    }
+}
+
+The withEnv function, on the other hand, is used to temporarily set environment variables for a specific block of
+code. It allows you to modify the environment for a particular step or set of steps without affecting the entire
+pipeline or stage.
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Here, we temporarily set the PATH environment variable for this step
+                withEnv(['PATH=/usr/local/bin']) {
+                    sh 'echo $PATH'
+                    // Only within this block, the PATH environment variable is modified
+                }
+                // Outside of the block, the original PATH value is retained
+            }
+        }
+        // Other stages...
+    }
+}
+
+%WORKSPACE% is an environment variable allocated by Jenkins dynamically for each job.
+It represents the absolute path to the directory where Jenkins checks out sourc

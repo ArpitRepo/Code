@@ -1,0 +1,44 @@
+. Program Remove the second highest element from the HashMap.
+2. Program to print the name in the short form
+ Input: Japneet Singh Sachdeva
+ Output: J.S. Sachdeva
+3. Program to get the Question and Answer Field wise from JSON
+4. Program to Print all Treemap elements?
+5. What is a singleton Design Pattern? How do you implement that?
+6. Write the Top 5 test cases for Booking Coupons.
+7. Write a program Given a sorted and rotated array arr[] of size N and a key, the task is to find the key in the array.
+8. What is serialization and deserialization?
+9. What is the Difference between status codes 401 and 402? 401 Unauthorized:, 402:- Payment Required
+10. Difference between selenium 3 and selenium 4?
+12. What are Ref and Out Keywords and where do we need to use these keywords?
+13. What are different Built-in Reports provided by Jira?
+14. How many maximum thread-pool can you open in the TestNG?
+15. What are the Major challenges that come into the picture when you do parallel testing
+using TestNG and Grid?
+16. How do you select a tool or Language for automation?
+17. How do you integrate your automation framework with the Jenkins pipeline?
+18. What will happen if we remove the main method?
+19. Difference between interface and Abstract class?
+20. Difference between String and StringBuffer?
+21. What steps do you take if a person is making the same mistake again and again even
+after a warning?
+22. What is the component of your current Project?
+23. How do you pass parameters in TestNG?
+24. What is the Hierarchy of Tags in the TestNG.xml file?
+25. Write the logic of retrying the failed test case with a minimum 3 numbers of time.
+Which Interface do you use for it?
+26. Please brief me about your daily activities as a Test Lead?
+27. Please explain the Java Map Hierarchy.
+28. Where do you use ArrayList and map in your framework?
+29. Explain the TreeMap.
+30. Difference between TreeMap and HashMap?
+31. How do you calculate the Automation effort and how do you track that?
+32. How do you set priorities for test automation, which test needs to be automated First?
+33. How do you set test case priorities for your team?
+34. What is WBS?
+35. How do you create a pipeline in Jenkins that executes every Tuesday at 9 AM, And what
+is the format that you add in the scheduler for day and time.
+36. What are the functional things you need to test on e-commerce sites?
+37. What kind of testing can be done after ordering the item on an e-commerce website?
+38. What are the challenges you face during Api Testing?
+39. What is a subquery?

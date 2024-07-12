@@ -1,0 +1,523 @@
+"Background" scenario is a way to define a set of steps that are common to all scenarios within a feature file. These steps are executed before each scenario in the feature file.
+
+Feature: Shopping Cart Functionality
+  As a user
+  I want to be able to add items to my shopping cart
+  So that I can purchase them later
+
+  Background:
+    Given I am on the shopping website
+    And I have logged in as a registered user
+
+  Scenario: Adding items to the shopping cart
+    When I search for "smartphone"
+    And I add the first item to my cart
+    Then the item should be added successfully
+
+  Scenario: Removing items from the shopping cart
+    When I view my shopping cart
+    And I remove an item from the cart
+    Then the item should be removed successfully
+
+In Cucumber, hooks are annotated methods that run before or after certain events in the test execution lifecycle.
+Here are the annotations/tags related to hooks in Cucumber:
+
+@Before: This annotation is used to specify a method that should be executed before each scenario. It is typically used for setup tasks such as initializing test data or setting up the environment.
+
+@After: This annotation is used to specify a method that should be executed after each scenario. It is commonly used for teardown tasks such as closing resources or cleaning up test data.
+
+@BeforeStep: This annotation is used to specify a method that should be executed before each step within a scenario. It can be useful for tasks that need to be performed before each step, such as logging or capturing screenshots.
+
+@AfterStep: This annotation is used to specify a method that should be executed after each step within a scenario. It can be useful for tasks that need to be performed after each step, such as verifying the state of the application.
+
+@BeforeAll: This annotation is used to specify a method that should be executed before all scenarios in a feature file. It is typically used for setup tasks that need to be performed once before running any scenarios in a feature.
+
+@AfterAll: This annotation is used to specify a method that should be executed after all scenarios in a feature file. It is commonly used for teardown tasks that need to be performed once after running all scenarios in a feature.
+
+Data Table works only for the single step below which it is defined rather than the entire scenario
+The Scenario Outline keyword can be used to run the same Scenario multiple times, with different combinations of data.
+Scenario Outline: Verify login with different credentials
+  Given User is on the login page
+  When User enters "<username>" and "<password>"
+  Then User should be logged in successfully
+
+  Examples:
+    | username | password  |
+    | user1    | password1 |
+    | user2    | password2 |
+    | user3    | password3 |
+
+Scenario: Verify login with different credentials
+  Given User is on the login page
+  When User enters the following credentials
+    | username | password  |
+    | user1    | password1 |
+    | user2    | password2 |
+    | user3    | password3 |
+  Then User should be logged in successfully
+
+  Feature: Shopping Cart Functionality
+    As a user
+    I want to be able to add items to my shopping cart
+    So that I can purchase them later
+
+    Background:
+      Given I am on the shopping website
+      And I have logged in as a registered user
+
+    Scenario: Adding items to the shopping cart
+      Given I have searched for "smartphone"
+      When I add the first item to my cart
+      Then the item should be added successfully
+
+    Scenario Outline: Removing items from the shopping cart
+      Given I have added <item> to my cart
+      When I remove the <item> from the cart
+      Then the <item> should be removed successfully
+
+      Examples:
+        | item       |
+        | laptop     |
+        | headphones |
+
+Passing Variables from feature file to step definition
+
+  Scenario: Adding an item to the shopping cart
+    Given I have searched for "smartphone"
+
+     @Given("I have searched for {string}")
+        public void i_have_searched_for(String item) {
+            scenarioContext.put("searchedItem", item);
+        }
+
+<div id="parent">
+    <span>First</span>
+    <span>Second</span>
+    <span>Third</span>
+</div>
+
+//span[text()='First']/following-sibling::span
+
+<div id="grandparent">
+    <div id="parent">
+        <span>Child</span>
+    </div>
+</div>
+WebElement grandparentDiv = driver.findElement(By.xpath("//span[text()='Child']/ancestor::div[@id='grandparent']"));
+
+
+Stale Element Reference Exception:
+
+This exception occurs when a previously located DOM element is no longer attached to the current DOM structure of the web page. It typically happens when the DOM is modified dynamically after the element has been located.
+Common scenarios leading to stale element reference exceptions include:
+The element being removed from the DOM through JavaScript.
+
+Stale Reference Exception:
+
+This exception is a more general term that can apply to any Java object reference becoming invalid or outdated.
+In the context of Selenium or web automation, a stale reference exception might occur when an object reference other than a DOM element becomes stale, such as a
+WebDriver instance, a WebElement reference, or any other Java object used in the automation process.
+This can happen due to various reasons, including:
+The object being garbage-collected or modified by another thread.
+
+WebElement can be used as a return type in method signatures when you want to return a reference to an HTML element
+from a method in Selenium WebDriver.
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class WebDriverSingleton {
+    private static WebDriver driver;
+
+    private WebDriverSingleton() {
+        // Private constructor to prevent instantiation
+    }
+
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            // Set up WebDriver (in this example, ChromeDriver)
+            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+            ChromeOptions options = new ChromeOptions();
+            // Set any desired options
+            // For example, options.addArguments("--headless"); // Run Chrome in headless mode
+            driver = new ChromeDriver(options);
+        }
+        return driver;
+    }
+
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+}
+
+JavascriptExecutor: Interface
+ JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+        // Execute JavaScript to click the element
+        jsExecutor.executeScript("arguments[0].click();", element);
+
+
+
+Actually, in Java, you cannot directly create an object of an interface because interfaces cannot be instantiated.
+However, you can create an object of a class that implements the interface.
+
+For example, the JavascriptExecutor interface is implemented by Selenium WebDriver classes like ChromeDriver,
+FirefoxDriver, etc. So, you can create an object of one of these classes and then cast it to JavascriptExecutor
+interface type to use its methods:
+WebDriver driver = new ChromeDriver(); // Instantiate WebDriver with ChromeDriver
+JavascriptExecutor jsExecutor = (JavascriptExecutor) driver; // Cast WebDriver to JavascriptExecutor
+
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "step_definitions",
+    tags = "@smoke",
+    plugin = {"pretty", "html:target/cucumber-reports"},
+    dryRun = false,
+    strict = true
+)
+public class TestRunner {
+    // This class will be empty
+}
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage {
+    private WebDriver driver;
+    private By usernameInput = By.id("username");
+    private By passwordInput = By.id("password");
+    private By loginButton = By.id("loginBtn");
+
+    // Constructor
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Method to set username
+    public void setUsername(String username) {
+        driver.findElement(usernameInput).sendKeys(username);
+    }
+
+    // Method to set password
+    public void setPassword(String password) {
+        driver.findElement(passwordInput).sendKeys(password);
+    }
+
+    // Method to click login button
+    public void clickLoginButton() {
+        driver.findElement(loginButton).click();
+    }
+
+    // Method to perform login action
+    public void login(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+        clickLoginButton();
+    }
+}
+
+
+selenium using OOPS
+
+https://www.numpyninja.com/post/java-oops-concepts-implementation-of-oops-concept-in-selenium-framework-part-2
+
+ WebElement ngSelectDropdown = driver.findElement(By.cssSelector("ng-select"));
+
+        // Click on the ng-select dropdown to open it
+        ngSelectDropdown.click();
+
+        // Find all option elements within the dropdown list
+        List<WebElement> optionElements = driver.findElements(By.cssSelector("ng-dropdown-panel ng-option"));
+
+        // Loop through the option elements and click on the desired option
+        for (WebElement option : optionElements) {
+            if (option.getText().equals("Option 1")) {
+                option.click();
+                break; // Exit the loop once the desired option is clicked
+            }
+        }
+ The Select class in Selenium is specifically designed to work with <select> elements in HTML, which are the
+ traditional dropdowns created using <select> and <option> tags. These dropdowns have a specific structure and
+ behavior that the Select class knows how to handle.
+However, <ng-select> in Angular does not use <select> and <option> tags. Instead, it's typically implemented
+using custom HTML elements and JavaScript functionality provided by Angular. As a result, the Select class may not
+work directly with <ng-select> elements because they do not conform to the expected structure of traditional HTML
+select elements.
+To interact with Angular dropdowns created using <ng-select>, you would typically need to use Selenium WebDriver's
+generic methods for finding and interacting with elements, such as findElement() and click(), as demonstrated in the
+previous example.
+
+ng=select, Ui<li>
+SendKeys
+Then generic xpath: findElements(List<WebElement>)
+for(WebElement e : lst){
+e.getText()
+}
+
+ Cucumber is not a design pattern, it is a tool that facilitates the implementation of BDD principles, which can be
+ complemented with various design patterns as needed during software development.
+
+
+
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources/features", // Location of feature files
+    glue = "com.example.steps", // Location of step definitions
+    plugin = {"pretty", "html:target/cucumber-reports", "json:target/cucumber-reports/report.json"}, // Plugins for reporting
+    tags = "@smoke", // Tags to include/exclude scenarios
+    dryRun = false, // Whether to run scenarios as a dry run
+    strict = true, // Fail if there are undefined or pending steps
+    monochrome = true // Makes the console output more readable
+)
+public class TestRunner {
+
+}
+Pretty Formatter ("pretty"):
+This plugin generates human-readable output in the console during test execution.
+It prints a detailed summary of the executed scenarios and steps.
+HTML Formatter ("html:target/cucumber-reports"):
+This plugin generates HTML reports containing detailed information about the test execution.
+The reports typically include features, scenarios, steps, step definitions, and their status (passed/failed/skipped).
+The reports are stored in the target/cucumber-reports directory.
+JSON Formatter ("json:target/cucumber-reports/report.json"):
+This plugin generates JSON-formatted reports capturing the test execution results.
+These reports can be consumed by other tools for further analysis or integration with continuous integration systems.
+The JSON report file is stored in the target/cucumber-reports directory with the name report.json
+
+POM is a design pattern used in Test automation framework. In it there is a one to one mapping between the Java
+classes and Web Application pages wherein the java classes will contain web elements objects corresponding to the pages
+of web application.
+
+the "Before Suite" annotation or method is typically used to perform setup tasks that need to be executed once before the entire test suite runs. Here's what commonly happens in the "Before Suite" phase:
+
+Configuration Setup:
+Initialization of configuration parameters, such as setting up browser configurations, database connections, or any
+other environment settings required for the test suite.
+Test Data Setup:
+Loading or preparing test data that will be used across multiple tests in the suite. This may involve reading data
+from files, databases, or external sources and storing it in memory or variables.
+Resource Allocation:
+Allocating and initializing resources that will be shared across tests, such as web driver instances, database
+connections, or other resources that require setup and teardown.
+Logging and Reporting Initialization:
+Setting up logging mechanisms or initializing reporting tools to capture and record test execution details, including
+test case status, logs, screenshots, and any other relevant information.
+Global Preconditions:
+Executing any preconditions or setup steps that are required for the entire test suite, such as login/authentication
+procedures or environment preparation.
+
+User
+in this return driver will get the instance from @beforeScenario ?
+import com.thoughtworks.gauge.BeforeScenario;
+import org.openqa.selenium.WebDriver;
+
+public class Hooks {
+    private static WebDriver driver;
+
+    @BeforeScenario
+    public void setUp() {
+        // Get the singleton instance of WebDriver
+        driver = WebDriverManager.getDriverInstance();
+    }
+
+    // Method to provide WebDriver instance to step implementations
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    // Method to close the WebDriver instance after scenario
+    public static void tearDown() {
+        WebDriverManager.closeDriver();
+    }
+}
+ChatGPT
+Yes, in this setup, the getDriver() method in the Hooks class will return the WebDriver instance obtained during the
+ @BeforeScenario setup.
+
+Let's break down the flow:
+
+In the setUp() method annotated with @BeforeScenario, the WebDriver instance is obtained from the WebDriverManager
+using WebDriverManager.getDriverInstance().
+This WebDriver instance is stored in the driver static variable.
+When getDriver() is called, it returns the WebDriver instance stored in the driver variable.
+Since setUp() is executed before each scenario (due to @BeforeScenario), the WebDriver instance is initialized before
+the scenario starts.
+Therefore, when getDriver() is called from within a step implementation, it will return the WebDriver instance
+obtained during the @BeforeScenario setup.
+
+mvn test -Dcucumber.options="--tags @tag Name"
+
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!'
+            }
+        }
+    }
+}
+
+The Maven Surefire Plugin is a key component in Maven-based Java projects, especially for running unit tests.
+It provides integration with JUnit, TestNG, and other testing frameworks, enabling Maven to execute tests as part of
+the build lifecycle. Here are some of the key features of the Maven Surefire Plugin:
+
+Surefire automatically discovers and executes tests in your project based on naming conventions and default
+configurations.
+Integration with Testing Frameworks:
+Surefire integrates seamlessly with popular Java testing frameworks like JUnit and TestNG. It automatically detects tests written using these frameworks and executes them during the test phase of the Maven build lifecycle.
+Parallel Test Execution:
+Surefire supports parallel execution of tests, which can significantly reduce the overall test execution time,
+especially on multi-core systems. Parallel execution can be configured at the class, method, or suite level.
+Forking:
+Surefire can fork a new JVM process to execute tests. Forking provides isolation between test cases and helps avoid issues such as memory leaks or classpath pollution.
+Custom Test Execution Configuration:
+Surefire allows you to customize various aspects of test execution through configuration options in the pom.xml file.
+You can specify includes/excludes patterns for test classes, set system properties, define timeouts, etc.
+Reporting:
+Surefire generates test reports in various formats, including plain text, XML, and HTML. These reports provide detailed information about test results, including the number of tests run, passed, failed, and skipped.
+JUnit 5 Support:
+Surefire provides support for running tests written with JUnit 5, the latest version of the JUnit testing framework. This includes support for new features such as nested tests, parameterized tests, and dynamic tests.
+TestNG Support:
+Surefire also supports running tests written with TestNG, an alternative testing framework to JUnit. It provides
+similar features for executing TestNG tests and generating test reports.
+
+The Maven Compiler Plugin is a core plugin used in Maven-based Java projects to compile
+Java source code.
+
+mvn test is a command used with Apache Maven, a build automation tool primarily used for Java projects. This command runs the tests in your project.
+
+AbstractTestNgCucumberTest
+
+mvn test -Dcucumber.options="@target/rerun.txt"
+
+AbstractTestNGCucumberTests is a class provided by the Cucumber TestNG integration that serves as a base class for
+creating TestNG test classes for Cucumber tests.
+AbstractTestNGCucumberTests indeed provides support for parallel execution of Cucumber tests when used in conjunction
+with TestNG.
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+import org.testng.annotations.DataProvider;
+
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "com.example.steps",
+    tags = "@smoke",
+    plugin = {"pretty", "html:target/cucumber-reports"}
+)
+AbstractTestNGCucumberTests is a class provided by Cucumber-JVM that integrates Cucumber
+The @DataProvider annotation is used in TestNG to supply data to a test method
+The default number of threads is determined by the TestNG framework, and it typically defaults to 5 threads.
+public class TestRunner extends AbstractTestNGCucumberTests {
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
+}
+
+Browsers provide native methods to directly access elements by their ID. For example, in JavaScript, the document.getElementById() method is highly optimized for performance
+and directly retrieves the element without traversing the DOM tree.
+
+Browsers maintain an internal mapping or hash table of element IDs to their corresponding elements. When you call document.getElementById("someId"), the browser can perform a
+quick lookup in this table to find the element. This lookup is typically a constant time operation, denoted as O(1) in Big-O notation, which means the time it takes to find
+the element does not increase with the size of the DOM.
+
+Fluent Wait in Selenium WebDriver is used to define the maximum amount of time to wait for a condition, as
+well as the frequency with which to check the condition before throwing an ElementNotVisibleException. This
+allows you to wait for a certain condition to occur, polling at regular intervals,
+and is particularly useful when dealing with dynamic web elements that may load or change states
+unpredictably.
+
+FluentWait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30)) // Maximum time to wait
+                .pollingEvery(Duration.ofSeconds(5)) // Check condition every 5 seconds
+                .ignoring(NoSuchElementException.class); /
+
+Since no specific tags are provided, all scenarios in all feature files will be executed.
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = {"com.example.stepdefinitions"}
+)
+public class TestRunner {
+    // This class will not contain any code as it only serves to run Cucumber tests
+}
+else
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = {"com.example.stepdefinitions"},
+    tags = "@taf" // Specify the tag you want to run
+)
+public class TestRunner {
+    // This class will not contain any code as it only serves to run Cucumber tests
+}
+
+//select[@id='fname']/following-sibling::select/
+
+What is a CSS Selector?
+1. ID
+2. Class
+3. Attribute
+4. Combining Attributes
+5. SubString
+
+driver.findElement(By.cssSelector("a#offers"));
+driver.findElement(By.cssSelector("#offers"));
+driver.findElement(By.cssSelector("a[id='offers']"));
+
+3. Attribute
+Apart from “id” and “class”, other attributes can also be used to locate
+web elements using CSS selector.
+driver.findElement(By.cssSelector("a[href='favourites']"));
+
+Combining attributes
+driver.findElement(By.cssSelector(“<tagname>#<id value>[href=’<href value>’]”));
+driver.findElement(By.cssSelector("a#offers[href='/offers']"));
+
+validating color
+ WebElement element = driver.findElement(By.id("elementId"));
+        String color = element.getCssValue("color");
+
+        // Convert rgba to hex if necessary
+        String hexColor = Color.fromString(color).asHex();
+
+        // Validate the color
+        if("#000000".equals(hexColor)) {
+
+ Actions actions = new Actions(driver);
+// Perform mouse hover action
+actions.moveToElement(elementToHover).perform();
+        }
+
+for (String handle : windowHandles) {
+            if (!handle.equals(originalWindow)) {
+                newTabHandle = handle;
+                break;
+            }
+        }
+
+        // Switch to the new tab
+        driver.switchTo().window(newTabHandle);

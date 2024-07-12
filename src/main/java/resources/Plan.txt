@@ -1,0 +1,27 @@
+Marker Interface
+Serializable Interface
+Comparable and Comparator
+Singleton
+Multithreading
+Serialization and Deserialization
+Correlated sub Query
+lexicographic order sorting arrays
+Thread Local and thread lock
+ExecutorService
+SQL Queries.  1) 2nd highesh salry with and without max,top, limit
+Quick Sort
+Reversing a Linked List
+Partition By
+Diff betweeen StringBuffer and StringBuilder(Not thread safe)
+Callable(returns a value and throws an exception) vs Runnable
+Runnable: The run() method of the Runnable interface does not return a value. It is a void method.
+Callable: The call() method of the Callable interface returns a result. The result is usually obtained through the Future interface, which represents the result of an asynchronous computation.
+Creating adding first and Lastnode in linked list
+Creating a linkedList
+Reversing a LinkedList
+Remove element from LinkedList
+Group by rules
+
+
+
+

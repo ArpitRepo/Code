@@ -1,0 +1,18 @@
+The "git pull" command is a combination of two other Git commands: "git fetch" and "git merge."
+It fetches changes from the remote repository and automatically merges them into the current branch.
+
+The git stash command helps you stash your work away and clear your working directory. Then when you checkout
+it will not carry over the new code with you.
+
+The command git rebase applies your commits on top of another branch. Here is an effective diagram I
+found online to explain it.
+
+It will move your new feature to the tail end of the new commits on master, creating one continuous flow of
+commits that should be conflict free, and replaces the need to merge.
+
+git fetch is a Git command used to download updates from a remote repository, such as new branches or changes in existing branches, without merging
+these updates into your local branch. This command allows you to see what changes have been made in the remote repository before integrating them
+into your local work.
+
+git fetch --all
+Purpose: Fetches updates from all configured remote repositories.

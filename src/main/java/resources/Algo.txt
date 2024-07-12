@@ -1,0 +1,7 @@
+1) RemoveDuplicates- use HashSet
+2) Valid Paranthesis: - Condition properly nested if it's nested
+3) Sum
+4) Longest Substring
+5) LongestCommonPrefix
+6) Reverse a linked list
+

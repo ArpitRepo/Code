@@ -1,0 +1,45 @@
+Authenticate:
+
+Authentication is the process of verifying the identity of a user or system attempting to access a resource.
+When a user or system provides credentials (such as a username and password, API key, or access token),
+ the server verifies the authenticity of those credentials to ensure that the requester is who they claim to be.
+Once authentication is successful, the server grants the user or system access to the requested resource.
+Authorize:
+
+Authorization is the process of determining whether a user or system has the necessary permissions to access
+a particular resource or perform a specific action.
+
+
+HTTPS, SSL, and TLS are related but distinct concepts that are often confused. Here's a breakdown of each term and their differences:
+
+HTTPS (Hypertext Transfer Protocol Secure)
+Definition: HTTPS is an extension of HTTP (Hypertext Transfer Protocol) that adds a layer of security by using encryption.
+Purpose: It ensures that data transmitted between a web browser and a server is encrypted, protecting against eavesdropping and man-in-the-middle attacks.
+Mechanism: HTTPS uses either SSL (Secure Sockets Layer) or TLS (Transport Layer Security) to encrypt the data. When you see "https://" at the beginning of a URL, it indicates that the site is using SSL/TLS encryption.
+SSL (Secure Sockets Layer)
+Definition: SSL is a protocol for establishing authenticated and encrypted links between networked computers.
+History: Developed by Netscape in the mid-1990s, SSL has gone through several versions, but it is now considered deprecated and insecure.
+Purpose: SSL was designed to provide secure communication over a computer network by encrypting data.
+Status: SSL 2.0 and 3.0 are no longer considered secure. They have been replaced by TLS.
+TLS (Transport Layer Security)
+Definition: TLS is the successor to SSL and is a protocol that ensures privacy between communicating applications and their users on the internet.
+History: TLS was first defined in 1999 as an update to SSL 3.0. It has several versions, with TLS 1.2 and TLS 1.3 being the most widely used today.
+Purpose: Like SSL, TLS aims to provide secure communication. It improves upon SSL by offering better security features and performance.
+Status: TLS is the current standard for secure communication over a computer network.
+Key Differences
+Evolution: SSL evolved into TLS. SSL is now outdated and insecure, while TLS is the modern, more secure protocol.
+Security: TLS offers better security than SSL. SSL is vulnerable to various attacks that TLS mitigates.
+Use: HTTPS can use either SSL or TLS, but modern HTTPS implementations use TLS due to its superior security.
+In Summary
+HTTPS: A secure version of HTTP that uses encryption provided by SSL or TLS.
+SSL: An older protocol for securing internet communications, now deprecated.
+TLS: The modern, more secure protocol that has replaced SSL for encrypting internet communications.
+By using TLS, HTTPS ensures that your web communications are secure, protecting sensitive information from being intercepted or tampered with.
+
+Epics in Jira
+Large-Scale Work: Epics represent significant pieces of work that cannot be completed within a single sprint. They are typically larger than a single user story
+or task.
+
+Validation is the process of checking whether the specification captures the customer's requirements, while
+verification is the process of checking that the software meets specifications.
+
