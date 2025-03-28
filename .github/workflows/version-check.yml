@@ -1,0 +1,30 @@
+name: Enforce Version Change
+
+on:
+  push:
+    branches:
+      - main  # Runs only when pushing to the main branch
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest  # Runs on Ubuntu latest runner
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Fetch last commit for comparison
+
+      - name: Check Version Change in pom.xml
+        run: |
+          PREV_VERSION=$(git show HEAD~1:pom.xml | grep -oPm1 "(?<=<version>)[^<]+")
+          CURR_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
+
+          echo "Previous Version: $PREV_VERSION"
+          echo "Current Version: $CURR_VERSION"
+
+          if [ "$PREV_VERSION" == "$CURR_VERSION" ]; then
+            echo "❌ Version has not changed. Please update the version before pushing."
+            exit 1
+          else
+            echo "✅ Version updated. Proceeding with the push."
+          fi
