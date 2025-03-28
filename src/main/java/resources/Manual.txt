@@ -61,6 +61,7 @@ Result: The outcome (pass/fail).
 Status: Execution status (executed/not executed).
 Defects and Issues:
 
+Change
 A summary of defects found during testing, including:
 Defect ID: Unique identifier for each defect.
 Description: Brief description of the defect.
