@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class AnagramChecker {
     public static boolean areAnagrams(String str1, String str2) {
         // Remove spaces and convert to lowercase for case-insensitive comparison
-        str1 = str1.replaceAll("\\s", "").toLowerCase();
-        str2 = str2.replaceAll("\\s", "").toLowerCase();
+        str1 = str1.replaceAll("\\s+", "").toLowerCase();
+        str2 = str2.replaceAll("\\s+", "").toLowerCase();
 
         // Check if the lengths of the two strings are the same
         if (str1.length() != str2.length()) {
