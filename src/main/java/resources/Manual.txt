@@ -43,3 +43,53 @@ or task.
 Validation is the process of checking whether the specification captures the customer's requirements, while
 verification is the process of checking that the software meets specifications.
 
+A Test Summary Report is a document or report generated after the completion of a test cycle or phase, providing a comprehensive overview of the testing activities, results, and metrics. It is an essential part of the software testing process, serving as a means to communicate the outcome and effectiveness of testing efforts to stakeholders, including project managers, developers, and quality assurance teams.
+
+Key Components of a Test Summary Report
+Introduction:
+
+An overview of the purpose, scope, and objectives of the testing activities.
+Test Plan Summary:
+
+A brief description of the testing plan, including test strategy, types of testing conducted (functional, non-functional, regression, etc.), and test environments used.
+Test Cases and Execution Summary:
+
+The total number of test cases planned, executed, passed, failed, and blocked. This section may include:
+Test Case ID/Name: Identifiers for each test case.
+Description: A brief description of the test case.
+Result: The outcome (pass/fail).
+Status: Execution status (executed/not executed).
+Defects and Issues:
+
+A summary of defects found during testing, including:
+Defect ID: Unique identifier for each defect.
+Description: Brief description of the defect.
+Severity/Priority: The impact level of the defect.
+Status: Current status (open, in progress, closed).
+Resolution: Description of how the defect was resolved or plans for resolution.
+Test Coverage:
+
+Details on the extent to which the application or system was covered by the tests, including:
+Requirements Coverage: Percentage of requirements tested.
+Code Coverage: If applicable, the percentage of code covered by automated tests.
+
+Aspect	Test Strategy	Test Planning
+Definition	High-level approach to testing	                    Detailed activities for testing
+Focus	What and how of testing	                                Who, when, and how much of testing
+Components	Objectives, scope, methodologies, tools	            Schedule, resources, deliverables
+Audience	Stakeholders, project managers	                    Testing team, project managers
+Timeframe	Created at the start of the project	                Created before testing starts
+
+
+🛠 Verification → "Are we building the product right?"
+✅ Validation → "Are we building the right product?"
+Verification is the process of ensuring that a product meets specifications, while validation is the process of ensuring that a product meets user needs.
+
+
+Feature	Static Testing 🛠	Dynamic Testing ✅
+Definition	Testing without executing code.	Testing by executing code.
+When?	Before execution (early SDLC).	After execution (runtime).
+Techniques	Reviews, walkthroughs, inspections, static code analysis.	Unit, Integration, System, UAT testing.
+Detects	Syntax errors, design flaws, missing requirements.	Functional issues, performance problems, runtime errors.
+Performed By	Developers, Business Analysts, QA.	Testers, End Users.
+Example	Reviewing requirements & design documents.	Running test cases in an application.
